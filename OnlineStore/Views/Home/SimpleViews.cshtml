@@ -1,0 +1,80 @@
+﻿<link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+<script src="http://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script src="http://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+
+
+<div>
+    <div class="row">
+        <div class="col-7 border border-primary">
+            <div id="carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="@ViewBag.product.listPhoto[0]">
+                    </div>
+                    @for (int i = 1; i < ViewBag.product.listPhoto.Count; i++)
+                    {
+                        <div class="item ">
+                            <img src="@ViewBag.product.listPhoto[i]">
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="clearfix">
+                <div id="thumbcarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            @for (int i = 0; i < ViewBag.product.listPhoto.Count; i++)
+                            {
+                                <div data-target="#carousel" data-slide-to="@i" class="thumb"><img src="@ViewBag.product.listPhoto[i]"></div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-5 border border-primary ">
+            <div>
+                <h2 class="h2" id="price">Цена @ViewBag.product.price</h2>
+                <div class="alert alert-primary">
+                    <h2>Описание</h2>
+                    <hr>
+                    <span class="h4">@ViewBag.product.description</span>
+                </div>
+                <hr>
+                <hr>
+                <div>
+                    <h2>Динамика Цен</h2>
+                    <div height:550px;overflow: scroll" class="alert alert-warning">
+                        @for (int i = 0; i < ViewBag.product.dataTime.Count; i++)
+                        {
+                            <h4 class="alert alert-primary"><span>@ViewBag.product.dataTime[i].dataTime</span> - <span>@ViewBag.product.dataTime[i].price</span></h4>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    #price {
+        background-color: #f57d17;
+        width:210px;
+    }
+    .item .thumb {
+        width: 15%;
+        cursor: pointer;
+        float: left;
+    }
+
+        .item .thumb img {
+            width: 100%;
+            margin: 2px;
+        }
+
+    .item img {
+        width: 90%;
+    }
+</style>

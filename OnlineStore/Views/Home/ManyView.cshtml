@@ -1,0 +1,50 @@
+﻿<div class="row  pt-5 justify-content-between">
+    @for (var i = 0; i < ViewBag.product.Count; i++)
+    {
+        <div class="card default_card default_card col-lg-3 col-md-3">
+            <img class="card-img-top" src="@ViewBag.product[i].listPhoto[0]" alt="Card image cap">
+            <h5>@ViewBag.product[i].nameProduct</h5>
+            <a href="~/GetSimplePage/@ViewBag.product[i].id" class="btn btn-outline-primary">Подробнее</a>
+            <div class="card-body text_hiden">
+                <span class="h4">@ViewBag.product[i].price</span>
+                <h6>@ViewBag.product[i].description</h6>
+            </div>
+        </div>
+    }
+        <div class="navigation col-12">
+            <nav aria-label="Page  navigation example">
+                <ul class="pagination pagination-lg">
+                    <li class="page-item"><a class="page-link" href="~/GetProduct/@ViewData["head"]/1">1</a></li>
+                    <li class="page-item"><a class="page-link" href="~/GetProduct/@ViewData["head"]/2">2</a></li>
+                    <li class="page-item"><a class="page-link" href="~/GetProduct/@ViewData["head"]/3">3</a></li>
+                    <li class="page-item"><a class="page-link" href="~/GetProduct/@ViewData["head"]/4">4</a></li>
+                    <li class="page-item"><a class="page-link" href="~/GetProduct/@ViewData["head"]/5">5</a></li>
+                    <li class="page-item"><a class="page-link" href="~/GetProduct/@ViewData["head"]/6">6</a></li>
+                </ul>
+            </nav>
+        </div>
+</div>
+
+
+<style>
+    .text_hiden {
+        overflow: hidden;
+    }
+
+    .card_hiden:hover {
+        height: auto;
+    }
+
+    .default_card {
+        margin: 5px;
+        height: 600px;
+    }
+
+    .default_card:hover {
+        height: auto;
+    }
+
+    .navigation{
+        margin:10px;
+    }
+</style>
