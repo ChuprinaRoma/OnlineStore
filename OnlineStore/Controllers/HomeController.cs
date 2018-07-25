@@ -37,13 +37,13 @@ namespace OnlineStore.Controllers
                     if ((curentShope != nameShop))
                     {
                         ManagerShope.listProduct = new List<Product>();
-                        Task.Run(async() =>
+                        Task.Run(async () =>
                         {
                             try
                             {
                                 await managerShope.GetAllProduct(nameShop);
                             }
-                            catch(Exception e)
+                            catch (Exception e)
                             {
                                 ViewData["Error"] = e.Message;
                                 view = View("Error");
@@ -53,8 +53,9 @@ namespace OnlineStore.Controllers
                     }
                     while (ManagerShope.listProduct.Count < (20 * idPaage) + 1)
                     {
-                        if(view != null)
+                        if (view != null)
                         {
+                            
                             ViewData["head"] = "Ошибка";
                             curentShope = null;
                             return view;
@@ -64,12 +65,14 @@ namespace OnlineStore.Controllers
                     ViewBag.product = ManagerShope.listProduct.GetRange((20 * idPaage) - 20, 21);
                     return View("ManyView");
                 }
-                catch(Exception)
+                catch (Exception e)
                 {
+                    ViewData["Error"] = e.Message;
                     ViewData["head"] = "Ошибка";
                     return View("Error");
                 }
             }
+
             return null;
         }
 
@@ -77,16 +80,31 @@ namespace OnlineStore.Controllers
         [Route("GetSimplePage/{idProduct}")]
         public IActionResult GetOneProduc(string idProduct)
         {
-            if(idProduct != "" && ManagerShope.listProduct != null && ManagerShope.listProduct.Count != 0)
+            try
             {
-                Product product = ManagerShope.listProduct.Find(p => p.id == idProduct);
-                ViewData["head"] = product.nameProduct;
-                ViewBag.product = product;
-                return View("SimpleViews");
+                if (idProduct != "" && ManagerShope.listProduct != null && ManagerShope.listProduct.Count != 0)
+                {
+                    Product product = ManagerShope.listProduct.Find(p => p.id == idProduct);
+                    if (product == null)
+                        throw new Exception();
+                    ViewData["head"] = product.nameProduct;
+                    ViewBag.product = product;
+                    return View("SimpleViews");
+                }
+                else
+                {
+                    ViewData["Error"] = "Не ожииданая ошибка";
+                    ViewData["head"] = "Ошибка";
+                    return View("Error");
+                }
             }
-            else
+            catch (Exception)
             {
-                return null;
+                ViewData["Error"] = "Не ожииданая ошибка";
+
+                ViewData["head"] = "Ошибка";
+                return View("Error");
+
             }
             
         }

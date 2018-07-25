@@ -1,8 +1,8 @@
 ﻿<div class="row  pt-5 justify-content-between">
     @for (var i = 0; i < ViewBag.product.Count; i++)
     {
-        <div class="card default_card default_card col-lg-3 col-md-3">
-            <img class="card-img-top" src="@ViewBag.product[i].listPhoto[0]" alt="Card image cap">
+        <div class="card default_card col-lg-3 col-md-3">
+            <img class="card-img-top" height="400" src="@ViewBag.product[i].listPhoto[0]" alt="Card image cap">
             <h5>@ViewBag.product[i].nameProduct</h5>
             <a href="~/GetSimplePage/@ViewBag.product[i].id" class="btn btn-outline-primary">Подробнее</a>
             <div class="card-body text_hiden">
@@ -27,6 +27,11 @@
 
 
 <style>
+    
+    .price{
+
+    }
+
     .text_hiden {
         overflow: hidden;
     }

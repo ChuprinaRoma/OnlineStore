@@ -31,13 +31,14 @@ namespace OnlineStore.model
             int countProduct = 0;
             int countPage    = 1;
             string sourse    = null;
-            while (countProduct < 121)
+            while (countProduct < 135)
             {
                 try
                 {
-                    
-                    sourse = connectorShope.GetContent(countPage.ToString()).GetAwaiter().GetResult();
-                    
+                    if (shopeSetings.typeReqvest == "parse")
+                    {
+                        sourse = connectorShope.GetContent(countPage.ToString()).GetAwaiter().GetResult();
+                    }
                     shopeSetings.Parser(sourse, ref countProduct);
                     countPage++;
                 }
@@ -53,7 +54,7 @@ namespace OnlineStore.model
             int countProduct = 0;
             int countPage    = 1;
             string sourse    = null;
-            while(ManagerShope.listProduct.Count <= 121 )
+            while(ManagerShope.listProduct.Count <= 135 )
             {
                 try
                 {

@@ -45,7 +45,7 @@ namespace OnlineStore.model
                 var elements = htmlDocument.GetElementsByClassName("plate-box").ToList();
                 for (int item = 0; item < elements.Count; item++)
                 {
-                    if (countProduct >= 130)
+                    if (countProduct >= 135)
                     {
                         return;
                     }
@@ -101,7 +101,7 @@ namespace OnlineStore.model
                 var elements = htmlDocument.GetElementsByClassName("plate-box").ToList();
                 for (int item = 0; item < elements.Count; item++)
                 {
-                    if (countProduct >= 130)
+                    if (countProduct >= 135)
                     {
                         return;
                     }

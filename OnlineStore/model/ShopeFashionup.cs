@@ -103,7 +103,7 @@ namespace OnlineStore.model
                 var element = doc.Element("data").Elements("content").ToList();
                 foreach (var el in element)
                 {
-                    if (countProduct >= 130)
+                    if (countProduct >= 135)
                     {
                         return;
                     }
@@ -145,7 +145,7 @@ namespace OnlineStore.model
                 var element   = doc.Element("data").Elements("content").ToList();
                 foreach (var el in element)
                 {
-                    if (countProduct >= 130)
+                    if (countProduct >= 135)
                     {
                         return;
                     }

@@ -45,7 +45,7 @@
                 <hr>
                 <div>
                     <h2>Динамика Цен</h2>
-                    <div height:550px;overflow: scroll" class="alert alert-warning">
+                    <div style="height:100vh;overflow:scroll" class="alert alert-warning">
                         @for (int i = 0; i < ViewBag.product.dataTime.Count; i++)
                         {
                             <h4 class="alert alert-primary"><span>@ViewBag.product.dataTime[i].dataTime</span> - <span>@ViewBag.product.dataTime[i].price</span></h4>
