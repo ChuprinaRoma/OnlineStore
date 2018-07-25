@@ -88,7 +88,7 @@ namespace UnitTestProject1
             ManagerShope.listProduct = new List<Product>();
             try
             {
-                dAOEntity_ = new DAOEntity_Framfork();
+                dAOEntity_    = new DAOEntity_Framfork();
                 object result = dAOEntity_.GetAllProduct(nameShope, isShopDB);
 
                 if(isShopDB)

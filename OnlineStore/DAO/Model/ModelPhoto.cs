@@ -11,7 +11,7 @@ namespace OnlineStore.DAO.Model
     {
         [Key]
         [ForeignKey("ModelProductDAO")]
-        public string id { get; set; }
+        public string id    { get; set; }
         public string photo { get; set; }
     }
 }

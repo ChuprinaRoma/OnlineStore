@@ -11,8 +11,8 @@ namespace OnlineStore.DAO.Model
     {
         [Key]
         [ForeignKey("ModelProductDAO")]
-        public string id { get; set; }
+        public string id       { get; set; }
         public string dataTime { get; set; }
-        public string price { get; set; } 
+        public string price    { get; set; } 
     }
 }

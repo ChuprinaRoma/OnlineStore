@@ -15,22 +15,22 @@ namespace OnlineStore.model
     public class WorkerParser
     {
         private ConnectorShope connectorShope = null;
-        private IShopeSetings shopeSetings = null;
+        private IShopeSetings shopeSetings    = null;
 
         public WorkerParser(IShopeSetings shopeSetings)
         {
             if (shopeSetings != null)
             {
                 this.shopeSetings = shopeSetings;
-                connectorShope = new ConnectorShope(shopeSetings.urlShope, shopeSetings.prefPage, shopeSetings.typeReqvest);
+                connectorShope    = new ConnectorShope(shopeSetings.urlShope, shopeSetings.prefPage, shopeSetings.typeReqvest);
             }
         }
 
         public void GetProducts()
         {
             int countProduct = 0;
-            int countPage = 1;
-            string sourse = null;
+            int countPage    = 1;
+            string sourse    = null;
             while (countProduct < 121)
             {
                 try
@@ -51,8 +51,8 @@ namespace OnlineStore.model
         public void UpdateProduct(List<ModelProductDAO> modelProductDAO)
         {
             int countProduct = 0;
-            int countPage = 1;
-            string sourse = null;
+            int countPage    = 1;
+            string sourse    = null;
             while(ManagerShope.listProduct.Count <= 121 )
             {
                 try

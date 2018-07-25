@@ -12,11 +12,11 @@ namespace OnlineStore.DAO.Model
 
         [Key]
         [ForeignKey("ModelAllShoppe")]
-        public string id { get; set; }
-        public string nameProduct { get; set; }
-        public string description { get; set; }
+        public string id                           { get; set; }
+        public string nameProduct                  { get; set; }
+        public string description                  { get; set; }
         public List<ModelDatePrice> ModelDatePrice { get; set; }
-        public List<ModelPhoto> listPhoto { get; set; }
+        public List<ModelPhoto> listPhoto          { get; set; }
     }
 }
 

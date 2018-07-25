@@ -17,23 +17,23 @@ namespace OnlineStore.model
 {
     public class ShopeFashionup : IShopeSetings
     {
-        public string nameShop { get; set; }
-        public string urlShope { get; set; }
-        public string prefPage { get; set; }
+        public string nameShop    { get; set; }
+        public string urlShope    { get; set; }
+        public string prefPage    { get; set; }
         public string typeReqvest { get; set; }
 
         public ShopeFashionup(string nameShop, string urlShope, string prefPage, string typeReqvest)
         {
-            this.nameShop = nameShop;
-            this.urlShope = urlShope;
-            this.prefPage = prefPage;
+            this.nameShop    = nameShop;
+            this.urlShope    = urlShope;
+            this.prefPage    = prefPage;
             this.typeReqvest = typeReqvest;
         }
 
         private List<ModelDatePrice> GetDatePrices(string price, ModelProductDAO modelProductDAO = null)
         {
             List<ModelDatePrice> listModelDatePrices = new List<ModelDatePrice>();
-            ModelDatePrice modelDatePrice = new ModelDatePrice();
+            ModelDatePrice modelDatePrice            = new ModelDatePrice();
             try
             {
                 if (modelProductDAO != null && modelProductDAO.ModelDatePrice != null)
@@ -41,7 +41,7 @@ namespace OnlineStore.model
                     listModelDatePrices = modelProductDAO.ModelDatePrice;
                 }
                 modelDatePrice.dataTime = DateTime.Today.ToLongDateString();
-                modelDatePrice.price = price;
+                modelDatePrice.price    = price;
                 listModelDatePrices.Add(modelDatePrice);
             }
             catch (Exception e)
@@ -64,20 +64,20 @@ namespace OnlineStore.model
         private List<string> GetListPhotoProduct(XElement element)
         {
             List<string> listPhoto = new List<string>();
-            var tegPhoto = element.Elements("poster").ToList();
+            var tegPhoto           = element.Elements("poster").ToList();
             listPhoto.AddRange(tegPhoto.Select(p => p.Value));
             return listPhoto;
         }
 
         public void Parser(string xmlDocument, ref int countProduct)
         {
-            string price = null;
-            string nameProduct = null;
-            string description = null;
-            string id = null;
+            string price           = null;
+            string nameProduct     = null;
+            string description     = null;
+            string id              = null;
             List<string> listPhoto = null;
-            Product product = null;
-            XDocument doc = null;
+            Product product        = null;
+            XDocument doc          = null;
 
             try
             {
@@ -103,12 +103,12 @@ namespace OnlineStore.model
                     {
                         return;
                     }
-                    id = el.Element("id").Value;
-                    nameProduct = el.Element("title").Value + " " + el.Element("articul").Value;
-                    price = el.Element("cost").Value+" грн";
-                    description = GetDescriptionProduct(el);
-                    listPhoto = GetListPhotoProduct(el);
-                    product = new Product(price, description, listPhoto, nameProduct, id);
+                    id               = el.Element("id").Value;
+                    nameProduct      = el.Element("title").Value + " " + el.Element("articul").Value;
+                    price            = el.Element("cost").Value+" грн";
+                    description      = GetDescriptionProduct(el);
+                    listPhoto        = GetListPhotoProduct(el);
+                    product          = new Product(price, description, listPhoto, nameProduct, id);
                     product.dataTime = GetDatePrices(price);
                     ManagerShope.listProduct.Add(product);
                     
@@ -127,17 +127,17 @@ namespace OnlineStore.model
 
         public void PartialParser(string htmlDocument, ref int countProduct, List<ModelProductDAO> modelProductDAO)
         {
-            string price = null;
-            string nameProduct = null;
-            string description = null;
-            string id = null;
+            string price           = null;
+            string nameProduct     = null;
+            string description     = null;
+            string id              = null;
             List<string> listPhoto = null;
             Product product = null;
 
             try
             {
                 XDocument doc = XDocument.Load($"{urlShope}/{prefPage}");
-                var element = doc.Element("data").Elements("content").ToList();
+                var element   = doc.Element("data").Elements("content").ToList();
                 foreach (var el in element)
                 {
                     if (countProduct >= 130)
@@ -154,20 +154,20 @@ namespace OnlineStore.model
                         {
                             listPhoto.Add(photo.photo);
                         }
-                        description = currProd.description;
-                        nameProduct = currProd.nameProduct;
-                        product = new Product(price, description, listPhoto, nameProduct, id);
+                        description      = currProd.description;
+                        nameProduct      = currProd.nameProduct;
+                        product          = new Product(price, description, listPhoto, nameProduct, id);
                         product.dataTime = GetDatePrices(price, currProd);
                         ManagerShope.listProduct.Add(product);
                     }
                     else
                     {
-                        id = el.Element("id").Value;
-                        nameProduct = el.Element("title").Value + " " + el.Element("articul").Value;
-                        price = el.Element("cost").Value + " Грн";
-                        description = GetDescriptionProduct(el);
-                        listPhoto = GetListPhotoProduct(el);
-                        product = new Product(price, description, listPhoto, nameProduct, id);
+                        id               = el.Element("id").Value;
+                        nameProduct      = el.Element("title").Value + " " + el.Element("articul").Value;
+                        price            = el.Element("cost").Value + " Грн";
+                        description      = GetDescriptionProduct(el);
+                        listPhoto        = GetListPhotoProduct(el);
+                        product          = new Product(price, description, listPhoto, nameProduct, id);
                         product.dataTime = GetDatePrices(price);
                         ManagerShope.listProduct.Add(product);
                     }

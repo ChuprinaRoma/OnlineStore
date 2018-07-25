@@ -15,13 +15,14 @@ namespace OnlineStore.Controllers
         private ManagerShope managerShope = new ManagerShope();
         private static string curentShope = null;
 
-
+        
         public IActionResult Index()
         {
             ViewData["head"] = "Все магазины";
             return View();
         }
 
+        //Контроллер возвращает страницу с продукцией для выбраного магазина
         [Route("GetProduct/{nameShop}/{idPaage}")]
         public IActionResult GetProduct(string nameShop, int idPaage)
         {
@@ -70,7 +71,7 @@ namespace OnlineStore.Controllers
             return null;
         }
 
-
+        //Контроллер возвращает страницу с выбраным продуктом
         [Route("GetSimplePage/{idProduct}")]
         public IActionResult GetOneProduc(string idProduct)
         {

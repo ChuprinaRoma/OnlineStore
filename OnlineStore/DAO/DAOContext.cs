@@ -9,10 +9,10 @@ namespace OnlineStore.DAO
 {
     public class DAOContext : DbContext
     {
-        public DbSet<ModelAllShoppe> shope { get; set; }
+        public DbSet<ModelAllShoppe> shope    { get; set; }
         public DbSet<ModelProductDAO> shopeTb { get; set; }
         public DbSet<ModelDatePrice> dataTime { get; set; }
-        public DbSet<ModelPhoto> photo { get; set; }
+        public DbSet<ModelPhoto> photo        { get; set; }
 
         public DAOContext()
         {

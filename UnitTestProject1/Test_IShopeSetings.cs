@@ -11,9 +11,9 @@ namespace UNTest_OnlineStore
     class Test_IShopeSetings
     {
         private List<Product> test_Products = null;
-        ManagerShope managerShope = null;
-        IShopeSetings shopeSetings = null;
-        ConnectorShope connectorShope = null;
+        ManagerShope managerShope           = null;
+        IShopeSetings shopeSetings          = null;
+        ConnectorShope connectorShope       = null;
 
         private string GetDocument(string typeFile, string typeTest)
         {
@@ -77,9 +77,9 @@ namespace UNTest_OnlineStore
             string sourse = null;
             try
             {
-                managerShope = new ManagerShope();
-                shopeSetings = managerShope.GetShope(nameShope);
-                connectorShope = new ConnectorShope(shopeSetings.urlShope, shopeSetings.prefPage, shopeSetings.typeReqvest);
+                managerShope             = new ManagerShope();
+                shopeSetings             = managerShope.GetShope(nameShope);
+                connectorShope           = new ConnectorShope(shopeSetings.urlShope, shopeSetings.prefPage, shopeSetings.typeReqvest);
                 ManagerShope.listProduct = new List<Product>();
                 sourse = GetDocument(typeFile, typeTest);
                 shopeSetings.Parser(sourse, ref countProduct);
