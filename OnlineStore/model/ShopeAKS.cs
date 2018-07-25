@@ -25,6 +25,8 @@ namespace OnlineStore.model
             this.typeReqvest = typeReqvest;
         }
 
+
+        //Метод парсер HTML
         public void Parser(string document, ref int countProduct)
         {
             string price                         = null;
@@ -81,6 +83,7 @@ namespace OnlineStore.model
             }
         }
 
+        //Метод частично парсит HTML
         public void PartialParser(string document, ref int countProduct, List<ModelProductDAO> modelProductDAO)
         {
             string price               = null;
@@ -148,7 +151,7 @@ namespace OnlineStore.model
         }
 
 
-
+        //Возращает цену продукта
         private string GetPriceProduct(IElement elements)
         {
 
@@ -166,6 +169,7 @@ namespace OnlineStore.model
             return price;
         }
 
+        //Возращает имя продукта
         private string GetNameProductProduct(IElement elements)
         {
             string nameProduct = null;
@@ -173,6 +177,7 @@ namespace OnlineStore.model
             return nameProduct;
         }
 
+        //Возращает описание продукта
         private string GetNameDescriptionProduct(IElement elements)
         {
             string description = null;
@@ -189,6 +194,7 @@ namespace OnlineStore.model
             return description;
         }
 
+        //Возращает фотографии продукта
         private List<string> GetNameListPhotoProduct(IHtmlDocument document)
         {
             List<string> listPhoto = new List<string>();
@@ -212,6 +218,7 @@ namespace OnlineStore.model
             return listPhoto;
         }
 
+        //Возращает колекцию цен с датами продукта
         private List<ModelDatePrice> GetDatePrices(string price, ModelProductDAO modelProductDAO = null)
         {
             List<ModelDatePrice> listModelDatePrices = new List<ModelDatePrice>();

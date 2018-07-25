@@ -30,6 +30,7 @@ namespace OnlineStore.model
             this.typeReqvest = typeReqvest;
         }
 
+        //Возращает колекцию цен с датами продукта
         private List<ModelDatePrice> GetDatePrices(string price, ModelProductDAO modelProductDAO = null)
         {
             List<ModelDatePrice> listModelDatePrices = new List<ModelDatePrice>();
@@ -51,6 +52,7 @@ namespace OnlineStore.model
             return listModelDatePrices;
         }
 
+        //Возращает описание продукта
         private string GetDescriptionProduct(XElement elements)
         {
             string description = null;
@@ -61,6 +63,7 @@ namespace OnlineStore.model
             return description;
         }
 
+        //Возращает фотографии продукта
         private List<string> GetListPhotoProduct(XElement element)
         {
             List<string> listPhoto = new List<string>();
@@ -69,6 +72,7 @@ namespace OnlineStore.model
             return listPhoto;
         }
 
+        //Метод парсер XML
         public void Parser(string xmlDocument, ref int countProduct)
         {
             string price           = null;
@@ -125,6 +129,7 @@ namespace OnlineStore.model
             }
         }
 
+        //Метод частично парсит HTML
         public void PartialParser(string htmlDocument, ref int countProduct, List<ModelProductDAO> modelProductDAO)
         {
             string price           = null;

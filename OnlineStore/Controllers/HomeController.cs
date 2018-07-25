@@ -9,6 +9,8 @@ using OnlineStore.model;
 
 namespace OnlineStore.Controllers
 {
+    //Програма парсит два магазина AKS.UA = парсим html и Fashionup = запрос по api парсим XML
+
     public class HomeController : Controller
     {
 

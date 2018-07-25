@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace OnlineStore.model
 {
+    //Програма парсит два магазина AKS.UA = парсим html и Fashionup = запрос по api парсим XML
+
     public class ManagerShope
     {
         private IShopeSetings shope                    = null;
@@ -67,7 +69,7 @@ namespace OnlineStore.model
                 }
             }
         }
-
+    
         public IShopeSetings GetShope(string nameShope)
         {
             IShopeSetings shope = null;

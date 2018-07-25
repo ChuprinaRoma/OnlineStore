@@ -18,6 +18,7 @@ namespace OnlineStore.DAO
             dAOContext = new DAOContext();
         }
 
+        //Загрузка связей базы даных
         private void init()
         {
             dAOContext.shope.Load();
@@ -26,6 +27,7 @@ namespace OnlineStore.DAO
             dAOContext.shopeTb.Load();
         }
 
+        //Проверка на существование имени и продуктов магазина
         public bool CheckNameShopeInDb(string nameShope)
         {
             bool isShopeDB = default;
@@ -57,6 +59,7 @@ namespace OnlineStore.DAO
             return isShopeDB;
         }
 
+        //Добавление всех даных в базу для нового магазина
         public async Task AddAllProductInDB(string nameShope)
         {
             init();
@@ -65,6 +68,7 @@ namespace OnlineStore.DAO
             await dAOContext.shope.AddAsync(modelAllShoppe);
             await dAOContext.SaveChangesAsync();
         }
+
 
         private ModelAllShoppe SetModelAllShope()
         {
@@ -108,6 +112,7 @@ namespace OnlineStore.DAO
             return mListPhoto;
         }
 
+        //Проверка на текущюю дату
         public bool CheckInDbOnDate(string nameShope, string currentData)
         {
             bool isData = default;
@@ -145,6 +150,7 @@ namespace OnlineStore.DAO
             return isData;
         }
 
+        //Чтение всех продуктов из базы для выбрпного магазина
         public List<ModelProductDAO> GetAllProduct(string nameShope, bool isShopeDB)
         {
             init();
@@ -197,6 +203,7 @@ namespace OnlineStore.DAO
             return listCurentShope.shope;
         }
 
+        //Обновление продукции в базе для выбраного магазина
         public  void UpdateProduct(string nameShopr)
         {
             
@@ -230,6 +237,7 @@ namespace OnlineStore.DAO
             
         }
 
+        //Удалкеие продукции из базы для выбраного магазина
         private void Remove(string nameShopr)
         {
             List<ModelProductDAO> modelProductDAOs = new List<ModelProductDAO>();
@@ -251,6 +259,7 @@ namespace OnlineStore.DAO
             }
         }
 
+        //Добавление продукции в базе для выбраного магазина
         private void Add(string nameShopr)
         {
             List<ModelProductDAO> modelProductDAOs   = new List<ModelProductDAO>();
